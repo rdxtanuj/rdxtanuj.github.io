@@ -73,38 +73,39 @@
 <body class="antialiased selection:bg-cyanglow selection:text-obsidian">
 
   <!-- Top Navigation -->
-  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-obsidian/85 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5 group">
-        <span class="w-2.5 h-2.5 rounded-full bg-emeraldglow animate-pulse"></span>
-        <span class="font-mono text-sm font-semibold tracking-tight text-slate-100 group-hover:text-cyanglow transition">
-          ER. TANUJ KUMAR
-        </span>
+  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-obsidian/90 backdrop-blur">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+    <!-- Brand: Single Line -->
+    <a href="#" class="flex items-center gap-2.5 font-mono text-sm font-bold tracking-wider text-slate-100 whitespace-nowrap shrink-0">
+      <span class="w-2 h-2 rounded-full bg-emeraldglow"></span>
+      ER. TANUJ KUMAR
+    </a>
+
+    <!-- Center Navigation Links: Single Line & Evenly Spaced -->
+    <nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300 whitespace-nowrap">
+      <a href="#systems" class="hover:text-cyanglow transition">Pipelines &amp; Systems</a>
+      <a href="#stack" class="hover:text-cyanglow transition">Technical Stack</a>
+      <a href="#experience" class="hover:text-cyanglow transition">Experience</a>
+      <a href="#contact" class="hover:text-cyanglow transition">Contact</a>
+    </nav>
+
+    <!-- Right Action Buttons: Separated from Contact & Single Line -->
+    <div class="flex items-center gap-3 whitespace-nowrap shrink-0">
+      <a href="https://github.com/rdxtanuj" target="_blank" rel="noopener"
+         class="px-3.5 py-2 rounded-lg border border-slate-700 bg-slatecard text-slate-200 text-xs font-medium hover:border-cyanglow hover:text-cyanglow transition">
+        GitHub ↗
       </a>
-
-      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-400">
-        <a href="#pipelines" class="hover:text-slate-100 transition">Pipelines & Systems</a>
-        <a href="#stack" class="hover:text-slate-100 transition">Technical Stack</a>
-        <a href="#experience" class="hover:text-slate-100 transition">Experience</a>
-        <a href="#contact" class="hover:text-slate-100 transition">Contact</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <a href="https://github.com/rdxtanuj" target="_blank" rel="noopener"
-           class="px-3.5 py-1.5 rounded-lg border border-slate-700 text-xs font-mono text-slate-200 hover:border-cyanglow hover:text-cyanglow transition">
-          GitHub ↗
-        </a>
-        <a href="https://www.linkedin.com/in/tanuj-kumar-90876127a/" target="_blank" rel="noopener"
-           class="hidden sm:inline-flex px-3.5 py-1.5 rounded-lg border border-slate-700 text-xs font-mono text-slate-200 hover:border-cyanglow hover:text-cyanglow transition">
-          LinkedIn ↗
-        </a>
-        <a href="#contact"
-           class="px-3.5 py-1.5 rounded-lg bg-cyanglow text-obsidian text-xs font-semibold hover:bg-sky-300 transition">
-          Hire / Connect
-        </a>
-      </div>
+      <a href="https://www.linkedin.com/in/tanuj-kumar-90876127a/" target="_blank" rel="noopener"
+         class="px-3.5 py-2 rounded-lg border border-slate-700 bg-slatecard text-slate-200 text-xs font-medium hover:border-cyanglow hover:text-cyanglow transition">
+        LinkedIn ↗
+      </a>
+      <a href="#contact"
+         class="px-4 py-2 rounded-lg bg-cyanglow text-obsidian text-xs font-semibold hover:bg-sky-300 transition">
+        Hire / Connect
+      </a>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- Hero Section -->
   <section class="relative grid-bg border-b border-slate-800/70">
