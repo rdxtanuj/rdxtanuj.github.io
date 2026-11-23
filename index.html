@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Er. Tanuj Kumar | Data Engineer & AI Systems Builder</title>
+  <meta name="description" content="Portfolio of Er. Tanuj Kumar — Data Engineer specializing in Medallion Lakehouses, PySpark, Databricks, Delta Lake, Quarantine Pipelines, and AI Systems." />
+
+  <!-- Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#070B14',
+            slatecard: '#0E1525',
+            slateborder: '#1E293B',
+            emeraldglow: '#10B981',
+            cyanglow: '#38BDF8',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #070B14;
+      color: #F1F5F9;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
+    }
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(30, 41, 59, 0.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(30, 41, 59, 0.25) 1px, transparent 1px);
+    }
+    .glass-card {
+      background: rgba(14, 21, 37, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.55);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.65);
+    }
+    .tab-active {
+      background: rgba(56, 189, 248, 0.14);
+      color: #38BDF8;
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+    .filter-active {
+      background: #38BDF8;
+      color: #070B14;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyanglow selection:text-obsidian">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-obsidian/85 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="w-2.5 h-2.5 rounded-full bg-emeraldglow animate-pulse"></span>
+        <span class="font-mono text-sm font-semibold tracking-tight text-slate-100 group-hover:text-cyanglow transition">
+          ER. TANUJ KUMAR <span class="text-slate-500">// DATA_ENG</span>
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-400">
+        <a href="#pipelines" class="hover:text-slate-100 transition">Pipelines & Systems</a>
+        <a href="#stack" class="hover:text-slate-100 transition">Technical Stack</a>
+        <a href="#experience" class="hover:text-slate-100 transition">Experience</a>
+        <a href="#contact" class="hover:text-slate-100 transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/rdxtanuj" target="_blank" rel="noopener"
+           class="px-3.5 py-1.5 rounded-lg border border-slate-700 text-xs font-mono text-slate-200 hover:border-cyanglow hover:text-cyanglow transition">
+          GitHub ↗
+        </a>
+        <a href="https://www.linkedin.com/in/tanuj-kumar-90876127a/" target="_blank" rel="noopener"
+           class="hidden sm:inline-flex px-3.5 py-1.5 rounded-lg border border-slate-700 text-xs font-mono text-slate-200 hover:border-cyanglow hover:text-cyanglow transition">
+          LinkedIn ↗
+        </a>
+        <a href="#contact"
+           class="px-3.5 py-1.5 rounded-lg bg-cyanglow text-obsidian text-xs font-semibold hover:bg-sky-300 transition">
+          Hire / Connect
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative grid-bg border-b border-slate-800/70">
+    <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-24">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emeraldglow/30 bg-emeraldglow/10 text-emeraldglow font-mono text-xs mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emeraldglow"></span>
+        OPEN TO DATA ENGINEERING, ANALYTICS & AI SYSTEMS ROLES
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.12] max-w-4xl">
+        Engineering Resilient <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyanglow to-emeraldglow">Medallion Lakehouses</span> & Privacy-First Data Pipelines.
+      </h1>
+
+      <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+        I’m <strong class="text-white font-semibold">Er. Tanuj Kumar</strong> (B.Tech in AI & Data Science). I build defensive ETL/ELT architectures, automated quarantine & deduplication engines, PII/PHI de-identification workflows, and AI-ready data marts using <span class="font-mono text-cyanglow text-sm">Databricks</span>, <span class="font-mono text-cyanglow text-sm">PySpark</span>, <span class="font-mono text-cyanglow text-sm">Delta Lake</span>, <span class="font-mono text-cyanglow text-sm">SQL</span>, and <span class="font-mono text-cyanglow text-sm">Polars</span>.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#pipelines"
+           class="px-6 py-3 rounded-xl bg-cyanglow text-obsidian font-semibold text-sm hover:bg-sky-300 transition shadow-lg shadow-cyanglow/15">
+          Explore Flagship Systems ↓
+        </a>
+        <a href="https://github.com/rdxtanuj" target="_blank" rel="noopener"
+           class="px-5 py-3 rounded-xl border border-slate-700 bg-slatecard/80 text-slate-200 font-medium text-sm hover:border-slate-500 transition">
+          github.com/rdxtanuj
+        </a>
+        <a href="https://www.linkedin.com/in/tanuj-kumar-90876127a/" target="_blank" rel="noopener"
+           class="px-5 py-3 rounded-xl border border-slate-700 bg-slatecard/80 text-slate-200 font-medium text-sm hover:border-cyanglow hover:text-cyanglow transition">
+          LinkedIn Profile ↗
+        </a>
+      </div>
+
+      <!-- Telemetry Proof Strip -->
+      <div class="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="glass-card rounded-xl p-5">
+          <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Architecture Pattern</div>
+          <div class="mt-1.5 text-xl font-bold text-white">Bronze → Silver → Gold</div>
+          <p class="mt-1 text-xs text-slate-400">Dual-stack implementations across Cloud Databricks & Local Polars/DuckDB.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Data Integrity First</div>
+          <div class="mt-1.5 text-xl font-bold text-emeraldglow">Quarantine & Zero Fan-Out</div>
+          <p class="mt-1 text-xs text-slate-400">Malformed rows isolated with explicit audit reasons; pre-aggregated Gold grains.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <div class="font-mono text-xs text-slate-400 uppercase tracking-wider">Governance & AI Readiness</div>
+          <div class="mt-1.5 text-xl font-bold text-cyanglow">PHI Redaction & ML Marts</div>
+          <p class="mt-1 text-xs text-slate-400">Salted pseudonymization, regex note scrubbing & ML-ready feature tables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flagship Projects / Case Studies -->
+  <section id="pipelines" class="max-w-6xl mx-auto px-5 py-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <span class="font-mono text-xs text-cyanglow uppercase tracking-widest">// PRODUCTION & LAB SYSTEMS</span>
+        <h2 class="mt-2 text-3xl font-bold text-white">Featured Engineering Case Studies</h2>
+        <p class="mt-2 text-sm text-slate-400 max-w-xl">
+          Switch tabs inside any project card to inspect its architecture flow and live SQL/PySpark implementation details.
+        </p>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="flex flex-wrap gap-2" id="project-filters">
+        <button data-filter="all" class="filter-btn filter-active px-3.5 py-1.5 rounded-lg text-xs font-mono border border-slate-700 transition">All (4)</button>
+        <button data-filter="de" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono text-slate-300 border border-slate-700 hover:border-slate-500 transition">Data Engineering</button>
+        <button data-filter="ai" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-mono text-slate-300 border border-slate-700 hover:border-slate-500 transition">AI & Quant Systems</button>
+      </div>
+    </div>
+
+    <div class="space-y-8" id="projects-container">
+
+      <!-- PROJECT 1: Loan Risk Lakehouse (Cloud + Local) -->
+      <article class="project-card glass-card rounded-2xl p-6 md:p-8" data-category="de">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-md bg-emeraldglow/15 text-emeraldglow font-mono text-xs font-medium">VERIFIED PIPELINE</span>
+              <span class="font-mono text-xs text-slate-400">Cloud Lakehouse + Local Engine</span>
+            </div>
+            <h3 class="mt-2 text-2xl font-bold text-white">Loan Risk Medallion Lakehouse (Databricks & Local Stack)</h3>
+          </div>
+          <a href="https://github.com/rdxtanuj/loan-risk-lakehouse" target="_blank" rel="noopener"
+             class="px-4 py-2 rounded-lg border border-slate-700 hover:border-cyanglow text-xs font-mono text-cyanglow transition">
+            Source Code ↗
+          </a>
+        </div>
+
+        <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+          Architected an end-to-end credit risk data platform implemented both as a managed <strong>Databricks</strong> job (<code class="font-mono text-xs text-cyanglow">daily_loan_risk_medallion_pipeline</code>) and a local-first engine (<code class="font-mono text-xs text-cyanglow">Polars + DuckDB + Prefect v3 + Streamlit</code>). Prevents silent metric distortion via rule-based quarantine and pre-aggregated Gold joins.
+        </p>
+
+        <!-- Tech Badges -->
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Databricks</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PySpark</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Delta Lake</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Polars & DuckDB</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Prefect v3</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Pytest</span>
+        </div>
+
+        <!-- Interactive Sub-Tabs -->
+        <div class="mt-6 border-t border-slate-800 pt-5">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <button onclick="switchTab(this, 'p1-overview')" class="tab-btn tab-active px-3 py-1.5 rounded-lg border border-transparent font-mono text-xs transition">Key Engineering Highlights</button>
+            <button onclick="switchTab(this, 'p1-arch')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 font-mono text-xs hover:text-slate-200 transition">Pipeline Flow</button>
+            <button onclick="switchTab(this, 'p1-code')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 font-mono text-xs hover:text-slate-200 transition">Gold Risk SQL</button>
+          </div>
+
+          <div id="p1-overview" class="tab-panel text-sm text-slate-300 space-y-2">
+            <ul class="list-disc list-inside space-y-1.5 text-slate-300">
+              <li><strong class="text-white">Quarantine Isolation:</strong> Invalid/corrupted loan & payment rows are captured into quarantine tables instead of failing jobs or skewing portfolio risk metrics.</li>
+              <li><strong class="text-white">Zero Join Fan-Out:</strong> Aggregated payment histories at the loan grain prior to joining loan master records, protecting EAD and Expected Loss accuracy.</li>
+              <li><strong class="text-white">Credit Risk Gold Mart:</strong> Computes Exposure at Default (EAD), Probability of Default (PD), Loss Given Default (LGD), Expected Loss, and Net Risk-Adjusted Revenue across 500+ portfolio loans.</li>
+            </ul>
+          </div>
+
+          <div id="p1-arch" class="tab-panel hidden">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 font-mono text-xs">
+              <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                <div class="text-amber-400 font-semibold">01. BRONZE LAYER</div>
+                <div class="mt-1 text-slate-400">Raw CSV/Parquet ingestion with batch audit timestamps & source lineage.</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                <div class="text-rose-400 font-semibold">02. QUARANTINE GATE</div>
+                <div class="mt-1 text-slate-400">Schema, null, & negative-principal checks route bad records to reject logs.</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                <div class="text-cyanglow font-semibold">03. SILVER LAYER</div>
+                <div class="mt-1 text-slate-400">Deterministic deduplication & standardized loan/payment entity grains.</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                <div class="text-emeraldglow font-semibold">04. GOLD RISK MART</div>
+                <div class="mt-1 text-slate-400">Portfolio risk aggregations (gold_portfolio_risk) powering SQL & BI views.</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="p1-code" class="tab-panel hidden relative">
+            <button onclick="copyCode(this)" class="absolute top-3 right-3 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">Copy SQL</button>
+            <pre class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto"><code>SELECT
+  COALESCE(status, 'UNKNOWN') AS loan_status,
+  COUNT(*) AS total_loans,
+  ROUND(AVG(credit_score), 0) AS avg_credit_score,
+  ROUND(SUM(ead), 2) AS total_ead,
+  ROUND(AVG(pd_est) * 100, 2) AS avg_pd_pct,
+  ROUND(SUM(expected_loss), 2) AS total_expected_loss,
+  ROUND(SUM(net_risk_adjusted_revenue), 2) AS net_risk_adj_revenue
+FROM workspace.loan_risk_dev.gold_portfolio_risk
+GROUP BY status
+ORDER BY total_expected_loss DESC;</code></pre>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2: Healthcare Clinical & Lab Lakehouse (PHI De-Identification) -->
+      <article class="project-card glass-card rounded-2xl p-6 md:p-8" data-category="de">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-md bg-cyanglow/15 text-cyanglow font-mono text-xs font-medium">HEALTHCARE DATA ARCHITECTURE</span>
+              <span class="font-mono text-xs text-slate-400">PII/PHI Privacy & ML-Ready Datasets</span>
+            </div>
+            <h3 class="mt-2 text-2xl font-bold text-white">Clinical & Lab Lakehouse with Automated PHI De-Identification</h3>
+          </div>
+          <span class="px-3.5 py-1.5 rounded-lg border border-slate-700 font-mono text-xs text-slate-300">
+            Medallion + Privacy Gate
+          </span>
+        </div>
+
+        <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+          Designed for messy, multi-source clinical encounters and laboratory exports. Automates <strong>salted pseudonymous key generation</strong>, regex scrubbing of free-text clinical notes, strict unit/range validation with quarantine logging, and curated longitudinal patient feature marts for ML training.
+        </p>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PySpark</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Delta Lake</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PII/PHI Hashing & Redaction</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Data Quality Quarantine</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">SQL Lineage Audit</span>
+        </div>
+
+        <div class="mt-6 border-t border-slate-800 pt-5">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <button onclick="switchTab(this, 'p2-overview')" class="tab-btn tab-active px-3 py-1.5 rounded-lg border border-transparent font-mono text-xs transition">Privacy & Quality Design</button>
+            <button onclick="switchTab(this, 'p2-code')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 font-mono text-xs hover:text-slate-200 transition">De-Identification Logic</button>
+          </div>
+
+          <div id="p2-overview" class="tab-panel text-sm text-slate-300 space-y-2">
+            <ul class="list-disc list-inside space-y-1.5">
+              <li><strong class="text-white">Deterministic Pseudonymization:</strong> Converts direct patient identifiers into salted SHA-256 <code class="font-mono text-xs text-cyanglow">subject_key</code> tokens so longitudinal lab joins work without exposing raw PII/PHI.</li>
+              <li><strong class="text-white">Clinical Note Redaction:</strong> Strips phone numbers, email addresses, and ID patterns from unstructured clinical notes prior to Silver persistence.</li>
+              <li><strong class="text-white">ML-Ready Gold Features:</strong> Delivers normalized lab indicators, abnormal-flag counts, missingness masks, and full audit lineage (<code class="font-mono text-xs text-cyanglow">raw → quarantined → silver → gold</code>).</li>
+            </ul>
+          </div>
+
+          <div id="p2-code" class="tab-panel hidden relative">
+            <button onclick="copyCode(this)" class="absolute top-3 right-3 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">Copy PySpark</button>
+            <pre class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto"><code>from pyspark.sql import functions as F
+
+def deidentify_clinical_df(df, salt: str):
+    return (
+        df.withColumn("subject_key", F.sha2(F.concat_ws("||", F.lit(salt), F.col("patient_id")), 256))
+          .withColumn("clean_notes", F.regexp_replace(
+              F.col("clinical_notes"),
+              r"(\b\d{10}\b|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})",
+              "[REDACTED]"
+          ))
+          .drop("patient_id", "patient_name", "phone", "email")
+    )</code></pre>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3: Financial Regime & Securitisation Risk AI -->
+      <article class="project-card glass-card rounded-2xl p-6 md:p-8" data-category="ai">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-md bg-purple-500/15 text-purple-300 font-mono text-xs font-medium">QUANT & RISK ANALYTICS</span>
+              <span class="font-mono text-xs text-slate-400">ZeTheta Algorithms Experience</span>
+            </div>
+            <h3 class="mt-2 text-2xl font-bold text-white">Bayesian Market Regime Detection & Securitisation Risk AI</h3>
+          </div>
+        </div>
+
+        <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+          Built quantitative analytics pipelines and risk intelligence workflows for Indian equity regimes, securitisation pool analytics, and bond risk assessment—translating volatile time-series signals into structured risk states.
+        </p>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Python</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Bayesian Modeling</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Financial Risk Analytics</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">AI Risk Agents</span>
+        </div>
+      </article>
+
+      <!-- PROJECT 4: H.O.N.E.Y. Local AI Automation Assistant -->
+      <article class="project-card glass-card rounded-2xl p-6 md:p-8" data-category="ai">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-300 font-mono text-xs font-medium">LOCAL AI & AUTOMATION</span>
+              <span class="font-mono text-xs text-slate-400">Modular Python Systems</span>
+            </div>
+            <h3 class="mt-2 text-2xl font-bold text-white">H.O.N.E.Y. — Voice & Local LLM Desktop Automation Engine</h3>
+          </div>
+        </div>
+
+        <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+          Modular Python desktop orchestration engine combining local speech-to-text (<code class="font-mono text-xs text-cyanglow">faster-whisper</code>), local LLM intent routing (<code class="font-mono text-xs text-cyanglow">Ollama</code>), and deterministic UI execution (<code class="font-mono text-xs text-cyanglow">PyAutoGUI</code>) for hands-free cross-platform communication workflows.
+        </p>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Python 3.12+</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Ollama (Local LLMs)</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">faster-whisper</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PyAutoGUI</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Technical Matrix -->
+  <section id="stack" class="border-y border-slate-800/80 bg-slatecard/35">
+    <div class="max-w-6xl mx-auto px-5 py-20">
+      <span class="font-mono text-xs text-cyanglow uppercase tracking-widest">// CORE CAPABILITIES</span>
+      <h2 class="mt-2 text-3xl font-bold text-white">Technical Stack & Tooling</h2>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-mono text-xs text-cyanglow uppercase tracking-wider">Lakehouse & Compute</h3>
+          <ul class="mt-4 space-y-2 text-sm text-slate-200 font-mono">
+            <li>• Databricks & Unity Catalog</li>
+            <li>• Apache Spark / PySpark</li>
+            <li>• Delta Lake (Medallion)</li>
+            <li>• Polars & DuckDB</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-mono text-xs text-emeraldglow uppercase tracking-wider">Languages & Databases</h3>
+          <ul class="mt-4 space-y-2 text-sm text-slate-200 font-mono">
+            <li>• Python (3.12 – 3.14)</li>
+            <li>• Advanced SQL & Windowing</li>
+            <li>• MySQL Server 8.0</li>
+            <li>• Parquet & Schema Design</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-mono text-xs text-purple-400 uppercase tracking-wider">BI, Orchestration & QA</h3>
+          <ul class="mt-4 space-y-2 text-sm text-slate-200 font-mono">
+            <li>• Prefect v3 & Databricks Jobs</li>
+            <li>• Power BI & DAX</li>
+            <li>• MS Excel (XLOOKUP / Modeling)</li>
+            <li>• Pytest & Git / GitHub</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-mono text-xs text-amber-400 uppercase tracking-wider">AI & App Delivery</h3>
+          <ul class="mt-4 space-y-2 text-sm text-slate-200 font-mono">
+            <li>• Local LLMs (Ollama)</li>
+            <li>• Multi-Agent ADK Systems</li>
+            <li>• Streamlit Data Apps</li>
+            <li>• Process Mining (Celonis)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Credentials -->
+  <section id="experience" class="max-w-6xl mx-auto px-5 py-20">
+    <span class="font-mono text-xs text-cyanglow uppercase tracking-widest">// TRACK RECORD</span>
+    <h2 class="mt-2 text-3xl font-bold text-white">Experience & Education</h2>
+
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="glass-card rounded-xl p-6">
+        <div class="font-mono text-xs text-emeraldglow">2026 • REMOTE LIVE PROJECT</div>
+        <h3 class="mt-1 text-lg font-bold text-white">Financial Data Analyst — ZeTheta Algorithms</h3>
+        <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+          Built a Bayesian Regime Detection Engine for Indian equity markets alongside Securitisation Risk Analytics and Bond Risk AI evaluation workflows.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-xl p-6">
+        <div class="font-mono text-xs text-cyanglow">2026 • URBAN DATA RESEARCH</div>
+        <h3 class="mt-1 text-lg font-bold text-white">Data Research Contributor — Happy City Index</h3>
+        <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+          Conducted 6 months of structured urban development and indicator research for Yokohama, standardizing multi-source civic metrics.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-xl p-6">
+        <div class="font-mono text-xs text-purple-400">2022 – 2026 • ANNA UNIVERSITY</div>
+        <h3 class="mt-1 text-lg font-bold text-white">B.Tech in Artificial Intelligence & Data Science</h3>
+        <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+          Gnanamani College of Technology • <strong>7.52 CGPA (75.63%)</strong>. Built <em>AgroVision Pro</em> (deep learning plant disease detection deployed via Streamlit).
+        </p>
+      </div>
+
+      <div class="glass-card rounded-xl p-6">
+        <div class="font-mono text-xs text-amber-400">CERTIFICATIONS & INTENSIVES</div>
+        <h3 class="mt-1 text-lg font-bold text-white">Kaggle & Google AI Agents • Celonis • NPTEL</h3>
+        <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+          Completed Kaggle/Google 5-Day AI Agents Intensive (Agent Development Kit), Celonis Process Mining & AI Foundations badges, and NPTEL Data Analytics with Python.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Footer -->
+  <footer id="contact" class="border-t border-slate-800 bg-obsidian">
+    <div class="max-w-6xl mx-auto px-5 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div>
+        <span class="font-mono text-xs text-emeraldglow uppercase tracking-widest">// READY TO SHIP</span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-white">Let’s build reliable data infrastructure.</h2>
+        <p class="mt-2 text-sm text-slate-400 max-w-lg">
+          Available for immediate joining in Data Engineering, Data Analytics, Business Analysis, and AI Automation roles.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="https://github.com/rdxtanuj" target="_blank" rel="noopener"
+           class="px-5 py-3 rounded-xl bg-cyanglow text-obsidian font-semibold text-sm hover:bg-sky-300 transition">
+          GitHub (@rdxtanuj)
+        </a>
+        <a href="https://www.linkedin.com/in/tanuj-kumar-90876127a/" target="_blank" rel="noopener"
+           class="px-5 py-3 rounded-xl border border-slate-700 bg-slatecard text-slate-200 font-medium text-sm hover:border-cyanglow hover:text-cyanglow transition">
+          LinkedIn Profile ↗
+        </a>
+        <a href="mailto:tanujkumar3252@gmail.com"
+           class="px-5 py-3 rounded-xl border border-slate-700 bg-slatecard text-slate-200 font-medium text-sm hover:border-emeraldglow hover:text-emeraldglow transition">
+          Email Direct
+        </a>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-900 py-6 text-center font-mono text-xs text-slate-500">
+      © 2026 Er. Tanuj Kumar • Built with zero-bloat architecture for instant load speed.
+    </div>
+  </footer>
+
+  <!-- Interactive Tab, Filter & Copy Logic -->
+  <script>
+    function switchTab(btn, panelId) {
+      const card = btn.closest('.project-card');
+      card.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('tab-active');
+        b.classList.add('border-slate-800', 'text-slate-400');
+      });
+      btn.classList.add('tab-active');
+      btn.classList.remove('border-slate-800', 'text-slate-400');
+
+      card.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+      card.querySelector('#' + panelId).classList.remove('hidden');
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('filter-active');
+          b.classList.add('text-slate-300');
+        });
+        btn.classList.add('filter-active');
+        btn.classList.remove('text-slate-300');
+
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    function copyCode(btn) {
+      const code = btn.nextElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const original = btn.innerText;
+        btn.innerText = 'Copied!';
+        btn.classList.add('text-emeraldglow');
+        setTimeout(() => {
+          btn.innerText = original;
+          btn.classList.remove('text-emeraldglow');
+        }, 1600);
+      });
+    }
+  </script>
+</body>
+</html>
