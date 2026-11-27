@@ -274,9 +274,10 @@ ORDER BY total_expected_loss DESC;</code></pre>
             </div>
             <h3 class="mt-2 text-2xl font-bold text-white">Clinical & Lab Lakehouse with Automated PHI De-Identification</h3>
           </div>
-          <span class="px-3.5 py-1.5 rounded-lg border border-slate-700 font-mono text-xs text-slate-300">
-            Medallion + Privacy Gate
-          </span>
+          <a href="https://github.com/rdxtanuj/clinical-phi-lakehouse" target="_blank" rel="noopener"
+         class="px-3.5 py-1.5 rounded-lg border border-slate-700 hover:border-cyanglow hover:text-cyanglow font-mono text-xs text-slate-300 transition">
+          Source Code ↗
+        </a>
         </div>
 
         <p class="mt-3 text-sm text-slate-300 leading-relaxed">
@@ -285,6 +286,8 @@ ORDER BY total_expected_loss DESC;</code></pre>
 
         <div class="mt-4 flex flex-wrap gap-2">
           <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PySpark</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Databricks</span>
+          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Unity Catalog</span>
           <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Delta Lake</span>
           <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PII/PHI Hashing & Redaction</span>
           <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Data Quality Quarantine</span>
@@ -299,10 +302,10 @@ ORDER BY total_expected_loss DESC;</code></pre>
 
           <div id="p2-overview" class="tab-panel text-sm text-slate-300 space-y-2">
             <ul class="list-disc list-inside space-y-1.5">
-              <li><strong class="text-white">Deterministic Pseudonymization:</strong> Converts direct patient identifiers into salted SHA-256 <code class="font-mono text-xs text-cyanglow">subject_key</code> tokens so longitudinal lab joins work without exposing raw PII/PHI.</li>
-              <li><strong class="text-white">Clinical Note Redaction:</strong> Strips phone numbers, email addresses, and ID patterns from unstructured clinical notes prior to Silver persistence.</li>
-              <li><strong class="text-white">ML-Ready Gold Features:</strong> Delivers normalized lab indicators, abnormal-flag counts, missingness masks, and full audit lineage (<code class="font-mono text-xs text-cyanglow">raw → quarantined → silver → gold</code>).</li>
-            </ul>
+            <li><strong class="text-white">Unity Catalog PHI Masking:</strong> Generates pseudonymous <code class="font-mono text-xs text-cyanglow">ANON_...</code> patient keys and scrubs free-text clinical notes so raw PHI never leaks downstream.</li>
+            <li><strong class="text-white">SCD Type 2 &amp; SLA Quality Gates:</strong> Tracks longitudinal patient history and quarantines malformed records with full audit lineage (<code class="font-mono text-xs text-cyanglow">raw → quarantined → silver → gold</code>).</li>
+            <li><strong class="text-white">Cohort Risk &amp; Governance Dashboard:</strong> Powers live BI analytics tracking peak HbA1c (7.87%) and cardiometabolic risk tiers—still flagging high-risk blood pressure cases even when lab panels are missing.</li>
+          </ul>
           </div>
 
           <div id="p2-code" class="tab-panel hidden relative">
