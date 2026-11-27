@@ -354,53 +354,83 @@ ORDER BY peak_hba1c_pct DESC NULLS LAST, peak_systolic_bp DESC;</code></pre>
       </div>
       </article>
 
-      <!-- PROJECT 3: Financial Regime & Securitisation Risk AI -->
-      <article class="project-card glass-card rounded-2xl p-6 md:p-8" data-category="ai">
-        <div class="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <div class="flex items-center gap-2.5 flex-wrap">
-              <span class="px-2.5 py-0.5 rounded-md bg-purple-500/15 text-purple-300 font-mono text-xs font-medium">QUANT & RISK ANALYTICS</span>
-              <span class="font-mono text-xs text-slate-400">ZeTheta Algorithms Experience</span>
+      <!-- PROJECT 3: H.O.N.E.Y. Local AI Automation Assistant -->
+        <article class="project-card glass-card rounded-2xl p-6 md:p-8" data-category="ai">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-300 font-mono text-xs font-medium">ACTIVE DEVELOPMENT</span>
+                <span class="font-mono text-xs text-slate-400">Local AI &amp; Desktop Orchestration</span>
+              </div>
+              <h3 class="mt-2 text-2xl font-bold text-white">H.O.N.E.Y. — Voice &amp; Local LLM Desktop Automation Engine</h3>
             </div>
-            <h3 class="mt-2 text-2xl font-bold text-white">Bayesian Market Regime Detection & Securitisation Risk AI</h3>
+            <!-- Optional: Uncomment and add your repo URL once public -->
+            <!-- <a href="https://github.com/rdxtanuj/honey" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg border border-slate-700 hover:border-cyanglow text-xs font-mono text-cyanglow transition"> Source Code ↗ </a> -->
           </div>
-        </div>
 
-        <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-          Built quantitative analytics pipelines and risk intelligence workflows for Indian equity regimes, securitisation pool analytics, and bond risk assessment—translating volatile time-series signals into structured risk states.
-        </p>
+          <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+            Modular Python desktop orchestration engine combining local speech-to-text (<code class="text-cyanglow">faster-whisper</code>), local LLM intent routing (<code class="text-cyanglow">Ollama</code>), and deterministic UI execution (<code class="text-cyanglow">PyAutoGUI</code>) for hands-free cross-platform communication workflows.
+          </p>
 
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Python</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Bayesian Modeling</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Financial Risk Analytics</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">AI Risk Agents</span>
-        </div>
-      </article>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Python</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Ollama (Local LLMs)</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">faster-whisper</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PyAutoGUI</span>
+          </div>
 
-      <!-- PROJECT 4: H.O.N.E.Y. Local AI Automation Assistant -->
-      <article class="project-card glass-card rounded-2xl p-6 md:p-8" data-category="ai">
-        <div class="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <div class="flex items-center gap-2.5 flex-wrap">
-              <span class="px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-300 font-mono text-xs font-medium">LOCAL AI & AUTOMATION</span>
-              <span class="font-mono text-xs text-slate-400">Modular Python Systems</span>
+          <!-- Interactive Tabs matching Projects 1 & 2 -->
+          <div class="mt-6 border-t border-slate-800 pt-5">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button onclick="switchTab(this, 'p3-highlights')" class="tab-btn tab-active px-3 py-1.5 rounded-lg border border-slate-700 text-xs font-mono transition">Architecture &amp; Safety</button>
+              <button onclick="switchTab(this, 'p3-flow')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 text-xs font-mono transition">Execution Flow</button>
+              <button onclick="switchTab(this, 'p3-code')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 text-xs font-mono transition">Intent Router Schema</button>
             </div>
-            <h3 class="mt-2 text-2xl font-bold text-white">H.O.N.E.Y. — Voice & Local LLM Desktop Automation Engine</h3>
+
+            <div id="p3-highlights" class="tab-panel text-sm text-slate-300 space-y-2">
+              <p>• <strong class="text-white">100% Offline Audio &amp; Inference:</strong> Transcribes voice commands locally via <code class="text-cyanglow">faster-whisper</code> and parses structured actions through local Ollama models with zero cloud API latency.</p>
+              <p>• <strong class="text-white">Deterministic UI Guardrails:</strong> Separates LLM intent classification from <code class="text-cyanglow">PyAutoGUI</code> execution using strict JSON schema validation and fail-safe corner aborts.</p>
+              <p>• <strong class="text-white">Modular Skill Plugins:</strong> Decoupled command handlers for desktop app launching, WhatsApp/messaging workflows, and system automation.</p>
+            </div>
+
+            <div id="p3-flow" class="tab-panel hidden">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono">
+                <div class="p-3 rounded-xl bg-obsidian border border-slate-800">
+                  <div class="text-slate-400">01 // CAPTURE</div>
+                  <div class="text-white font-semibold mt-1">Voice / Text Input</div>
+                  <div class="text-slate-400 mt-1">Push-to-talk audio buffer &amp; CLI prompt listener</div>
+                </div>
+                <div class="p-3 rounded-xl bg-obsidian border border-slate-800">
+                  <div class="text-amber-300">02 // TRANSCRIBE</div>
+                  <div class="text-white font-semibold mt-1">faster-whisper STT</div>
+                  <div class="text-slate-400 mt-1">Low-latency local speech-to-text normalization</div>
+                </div>
+                <div class="p-3 rounded-xl bg-obsidian border border-slate-800">
+                  <div class="text-cyanglow">03 // ROUTE</div>
+                  <div class="text-white font-semibold mt-1">Ollama Intent Parser</div>
+                  <div class="text-slate-400 mt-1">Maps utterance to validated JSON action + slots</div>
+                </div>
+                <div class="p-3 rounded-xl bg-obsidian border border-slate-800">
+                  <div class="text-emeraldglow">04 // EXECUTE</div>
+                  <div class="text-white font-semibold mt-1">PyAutoGUI Engine</div>
+                  <div class="text-slate-400 mt-1">Deterministic UI steps with confirmation gate</div>
+                </div>
+              </div>
+            </div>
+
+            <div id="p3-code" class="tab-panel hidden relative">
+              <button onclick="copyCode('code-p3', this)" class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-mono text-cyanglow">Copy</button>
+              <pre id="code-p3" class="p-4 rounded-xl bg-obsidian border border-slate-800 text-xs font-mono text-slate-300 overflow-x-auto leading-relaxed">{
+  "intent": "send_message",
+  "platform": "whatsapp_desktop",
+  "recipient": "Raja Mahto",
+  "payload": "On my way, reaching in 10 mins.",
+  "requires_confirmation": true,
+  "failsafe_enabled": true
+}</pre>
+            </div>
           </div>
-        </div>
-
-        <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-          Modular Python desktop orchestration engine combining local speech-to-text (<code class="font-mono text-xs text-cyanglow">faster-whisper</code>), local LLM intent routing (<code class="font-mono text-xs text-cyanglow">Ollama</code>), and deterministic UI execution (<code class="font-mono text-xs text-cyanglow">PyAutoGUI</code>) for hands-free cross-platform communication workflows.
-        </p>
-
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Python</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Ollama (Local LLMs)</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">faster-whisper</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PyAutoGUI</span>
-        </div>
-      </article>
+        </article>
 
     </div>
   </section>
