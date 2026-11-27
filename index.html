@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Er. Tanuj Kumar | Data Engineer & AI Systems Builder</title>
   <meta name="description" content="Portfolio of Er. Tanuj Kumar — Data Engineer specializing in Medallion Lakehouses, PySpark, Databricks, Delta Lake, Quarantine Pipelines, and AI Systems." />
+  <!-- Open Graph / Social Preview Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rdxtanuj.github.io/" />
+  <meta property="og:title" content="Er. Tanuj Kumar | Data Engineer & AI Systems Builder" />
+  <meta property="og:description" content="Medallion Lakehouses, PySpark, Databricks, Unity Catalog PHI De-Identification, Quarantine Pipelines, and AI Systems." />
+  <meta property="og:image" content="https://rdxtanuj.github.io/preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -290,40 +297,63 @@ ORDER BY total_expected_loss DESC;</code></pre>
           <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Unity Catalog</span>
           <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Delta Lake</span>
           <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">PII/PHI Hashing & Redaction</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">Data Quality Quarantine</span>
-          <span class="px-2.5 py-1 rounded bg-slate-800/90 text-slate-200 font-mono text-xs">SQL Lineage Audit</span>
+          <div class="mt-6 border-t border-slate-800 pt-5">
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button onclick="switchTab(this, 'p2-overview')" class="tab-btn tab-active px-3 py-1.5 rounded-lg border border-transparent font-mono text-xs transition">Privacy &amp; Quality Design</button>
+          <button onclick="switchTab(this, 'p2-arch')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 font-mono text-xs hover:text-slate-200 transition">Pipeline Flow</button>
+          <button onclick="switchTab(this, 'p2-code')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 font-mono text-xs hover:text-slate-200 transition">De-Identification &amp; Risk SQL</button>
         </div>
 
-        <div class="mt-6 border-t border-slate-800 pt-5">
-          <div class="flex flex-wrap gap-2 mb-4">
-            <button onclick="switchTab(this, 'p2-overview')" class="tab-btn tab-active px-3 py-1.5 rounded-lg border border-transparent font-mono text-xs transition">Privacy & Quality Design</button>
-            <button onclick="switchTab(this, 'p2-code')" class="tab-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 font-mono text-xs hover:text-slate-200 transition">De-Identification Logic</button>
-          </div>
-
-          <div id="p2-overview" class="tab-panel text-sm text-slate-300 space-y-2">
-            <ul class="list-disc list-inside space-y-1.5">
+        <div id="p2-overview" class="tab-panel text-sm text-slate-300 space-y-2">
+          <ul class="list-disc list-inside space-y-1.5">
             <li><strong class="text-white">Unity Catalog PHI Masking:</strong> Generates pseudonymous <code class="font-mono text-xs text-cyanglow">ANON_...</code> patient keys and scrubs free-text clinical notes so raw PHI never leaks downstream.</li>
             <li><strong class="text-white">SCD Type 2 &amp; SLA Quality Gates:</strong> Tracks longitudinal patient history and quarantines malformed records with full audit lineage (<code class="font-mono text-xs text-cyanglow">raw → quarantined → silver → gold</code>).</li>
             <li><strong class="text-white">Cohort Risk &amp; Governance Dashboard:</strong> Powers live BI analytics tracking peak HbA1c (7.87%) and cardiometabolic risk tiers—still flagging high-risk blood pressure cases even when lab panels are missing.</li>
           </ul>
-          </div>
+        </div>
 
-          <div id="p2-code" class="tab-panel hidden relative">
-            <button onclick="copyCode(this)" class="absolute top-3 right-3 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">Copy PySpark</button>
-            <pre class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto"><code>from pyspark.sql import functions as F
-
-def deidentify_clinical_df(df, salt: str):
-    return (
-        df.withColumn("subject_key", F.sha2(F.concat_ws("||", F.lit(salt), F.col("patient_id")), 256))
-          .withColumn("clean_notes", F.regexp_replace(
-              F.col("clinical_notes"),
-              r"(\b\d{10}\b|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})",
-              "[REDACTED]"
-          ))
-          .drop("patient_id", "patient_name", "phone", "email")
-    )</code></pre>
+        <div id="p2-arch" class="tab-panel hidden">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 font-mono text-xs">
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="text-amber-400 font-semibold">01. BRONZE + PHI GATE</div>
+              <div class="mt-1 text-slate-400">Incremental EHR &amp; lab ingest with Unity Catalog ANON_ key masking &amp; note redaction.</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="text-rose-400 font-semibold">02. QUARANTINE &amp; SLA</div>
+              <div class="mt-1 text-slate-400">Unit standardization (mmol/L → mg/dL) &amp; range checks isolating corrupt payloads.</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="text-cyanglow font-semibold">03. SILVER SCD TYPE 2</div>
+              <div class="mt-1 text-slate-400">Tracks longitudinal patient history with 100% row-count lineage reconciliation.</div>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="text-emeraldglow font-semibold">04. GOLD COHORT MART</div>
+              <div class="mt-1 text-slate-400">Cardiometabolic risk tiers &amp; peak HbA1c analytics resilient to missing lab panels.</div>
+            </div>
           </div>
         </div>
+
+        <div id="p2-code" class="tab-panel hidden relative">
+          <button onclick="copyCode(this)" class="absolute top-3 right-3 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-300">Copy SQL</button>
+          <pre class="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-200 overflow-x-auto"><code>-- Gold Cohort Risk &amp; Governance Query (Resilient to Missing Lab Panels)
+SELECT
+    p.anon_patient_key,
+    p.cardiometabolic_risk_tier,
+    MAX(p.systolic_bp) AS peak_systolic_bp,
+    ROUND(MAX(l.hba1c_pct), 2) AS peak_hba1c_pct,
+    CASE
+        WHEN MAX(l.hba1c_pct) &gt;= 6.5 OR MAX(p.systolic_bp) &gt;= 140 THEN 'HIGH_RISK'
+        WHEN MAX(l.hba1c_pct) BETWEEN 5.7 AND 6.4 THEN 'PRE_DIABETIC_WATCH'
+        ELSE 'BASELINE_MONITOR'
+    END AS clinical_action_flag
+FROM workspace.clinical_phi.silver_patient_scd2 p
+LEFT JOIN workspace.clinical_phi.silver_lab_results l
+    ON p.anon_patient_key = l.anon_patient_key
+WHERE p.is_current = TRUE
+GROUP BY p.anon_patient_key, p.cardiometabolic_risk_tier
+ORDER BY peak_hba1c_pct DESC NULLS LAST, peak_systolic_bp DESC;</code></pre>
+        </div>
+      </div>
       </article>
 
       <!-- PROJECT 3: Financial Regime & Securitisation Risk AI -->
